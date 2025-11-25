@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hamburger Menu</title>
+  <!-- Googl-Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&family=M+PLUS+Rounded+1c&family=Noto+Sans+JP:wght@500&family=Oswald&family=Sofia&display=swap" rel="stylesheet">
+</head>
+<body id="top">
+  <!-- 定義する図形 paws -->
+  <svg style="display: none;">
+    <defs>
+      <path id="paws" d="M298.5 156.9C312.8 199.8 298.2 243.1 265.9 253.7C233.6 264.3 195.8 238.1 181.5 195.2C167.2 152.3 181.8 109 214.1 98.4C246.4 87.8 284.2 114 298.5 156.9zM164.4 262.6C183.3 295 178.7 332.7 154.2 346.7C129.7 360.7 94.5 345.8 75.7 313.4C56.9 281 61.4 243.3 85.9 229.3C110.4 215.3 145.6 230.2 164.4 262.6zM133.2 465.2C185.6 323.9 278.7 288 320 288C361.3 288 454.4 323.9 506.8 465.2C510.4 474.9 512 485.3 512 495.7L512 497.3C512 523.1 491.1 544 465.3 544C453.8 544 442.4 542.6 431.3 539.8L343.3 517.8C328 514 312 514 296.7 517.8L208.7 539.8C197.6 542.6 186.2 544 174.7 544C148.9 544 128 523.1 128 497.3L128 495.7C128 485.3 129.6 474.9 133.2 465.2zM485.8 346.7C461.3 332.7 456.7 295 475.6 262.6C494.5 230.2 529.6 215.3 554.1 229.3C578.6 243.3 583.2 281 564.3 313.4C545.4 345.8 510.3 360.7 485.8 346.7zM374.1 253.7C341.8 243.1 327.2 199.8 341.5 156.9C355.8 114 393.6 87.8 425.9 98.4C458.2 109 472.8 152.3 458.5 195.2C444.2 238.1 406.4 264.3 374.1 253.7z"/>
+    <!-- 定義する図形 paws 終了 -->
+    <!-- 定義する図形 circle -->
+      <path id="circle"
+        d="M 0 50
+           A 50 50 0 1 1 0 50.1
+           z"/>
+      <!-- 定義する図形 circle 終了-->
+      <!-- 定義する図形 hamburger-icon -->
+      <symbol id="hamburger-icon" viewBox="0 0 32 32">
+        <path d="M2 6h28v6h-28zM2 14h28v6h-28zM2 22h28v6h-28z" />
+      </symbol>
+      <!-- 定義する図形 hamnurger-icon 終了-->
+      <!-- 定義する図形 hamburger-close-icon -->
+        <symbol id="hamburger-close-icon" viewBox="0 0 32 32">
+<path d="M31.708 25.708c-0-0-0-0-0-0l-9.708-9.708 9.708-9.708c0-0 0-0 0-0 0.105-0.105 0.18-0.227 0.229-0.357 0.133-0.356 0.057-0.771-0.229-1.057l-4.586-4.586c-0.286-0.286-0.702-0.361-1.057-0.229-0.13 0.048-0.252 0.124-0.357 0.228 0 0-0 0-0 0l-9.708 9.708-9.708-9.708c-0-0-0-0-0-0-0.105-0.104-0.227-0.18-0.357-0.228-0.356-0.133-0.771-0.057-1.057 0.229l-4.586 4.586c-0.286 0.286-0.361 0.702-0.229 1.057 0.049 0.13 0.124 0.252 0.229 0.357 0 0 0 0 0 0l9.708 9.708-9.708 9.708c-0 0-0 0-0 0-0.104 0.105-0.18 0.227-0.229 0.357-0.133 0.355-0.057 0.771 0.229 1.057l4.586 4.586c0.286 0.286 0.702 0.361 1.057 0.229 0.13-0.049 0.252-0.124 0.357-0.229 0-0 0-0 0-0l9.708-9.708 9.708 9.708c0 0 0 0 0 0 0.105 0.105 0.227 0.18 0.357 0.229 0.356 0.133 0.771 0.057 1.057-0.229l4.586-4.586c0.286-0.286 0.362-0.702 0.229-1.057-0.049-0.13-0.124-0.252-0.229-0.357z"></path>
+</symbol>
+      <!-- 定義する図形 hamburger-close-icon 終了-->
+      <!-- 定義する図形 step-circle -->
+        <circle id="step-circle-defs" cx="38" cy="38" r="36" />
+      <!-- 定義する図形 step-circle 終了 -->
+    </def>
+  </svg>
+
+
+  <div id="flex-container" class="flex-wrapper flex-items">
+    <div id="header-flex-item" class="header-item header-content"><span class="header-flex-name flex-name">Header</span>
+      <!-- sect + tab -->
+      <section id="header-logo-text-img" class="header-logo-wrapper" >
+        <div class="header-logo-text">肉球</div>
+        <div class="header-logo-img">
+          <a href="#"><img src="https://dl.dropbox.com/scl/fi/oo7drs74doq5o9r7pf0cl/.jpg?rlkey=g615oi0jc97p9lod4o6lnxt16&st=z6l0j2at&dl=0" height="48px" alt="肉球の画像"></a>
+            <p id="company-name">森のどうぶつ診療所。</p>
+        </div>
+      </section>
+      <nav id="header-nav-wrapper">
+        <ul id="header-nav-lists">
+          <li class="header-nav-list header-nav-home" data-index="0"><p id="header-nav1" >ホーム</p>
+            <ul id="" class="header-dropdown-menu-wrapper header-dropdown-menu-lists-none" data-index="0">
+              <!-- ドロップダウンメニューがある場合はここに追加してください。 -->
+              <span id="vertical-line-dropdown-menu"></span>
+              <!-- 定義された図形 paws -->
+              <svg class="paws" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                <!-- use[href] -->
+                <use href="#paws" />
+              </svg>
+              <!-- 定義された図形 paws 終了 -->
+            </ul>
+          </li>
+          <li class="header-nav-list" data-index="1"><p id="header-nav2" >私たちについて</p>
+          <!-- ul#header-dropdown-menu-wrapper.header-dropdown-menu-lists>(li#header-dropdown-list>a.)*3 + tab -->
+            <ul id="" class="header-dropdown-menu-wrapper header-dropdown-menu-lists" data-index="1">
+              <li class="header-dropdown-menu-list"><a href="" class="">私たちについて</a></li>
+              <li class="header-dropdown-menu-list"><a href="" class="">私たちの取り組み</a></li>
+              <li class="header-dropdown-menu-list"><a href="" class="">動物と人の関係性は?</a></li>
+              <span id="vertical-line-dropdown-menu"></span>
+              <!-- 定義された図形 paws -->
+              <svg class="paws" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                <!-- use[href] -->
+                <use href="#paws" />
+              </svg>
+              <!-- 定義された図形 paws 終了 -->
+            </ul>
+          </li>
+      <li class="header-nav-list" data-index="2"><p>診療案内</p>
+            <ul class="header-dropdown-menu-wrapper header-dropdown-menu-lists" style="visibility: hidden;">
+              <div id="header-dropdown-menu-medical-info-flex-container" data-index="2">
+                <div id="dropdown-menu-hospital-lists" >
+                  <li class="header-dropdown-menu-list"><a href="" class="">○○病院</a></li>
+                  <li class="header-dropdown-menu-list"><a href="" class="">○○○○○○病院</a></li>
+                  <li class="header-dropdown-menu-list"><a href="" class="">○○○○病院</a></li>
+                  <li class="header-dropdown-menu-list"><a href="" class="">○○○○病院</a></li>
+                </div>
+                <div id="dropdown-menu-non-hospital-lists">
+                  <li class="header-dropdown-menu-list"><a href="" class="">どうぶつと人の<br>  リラックス環境</a></li>
+                  <li class="header-dropdown-menu-list"><a href="" class="">スタッフ紹介</a></li>
+                  <li class="header-dropdown-menu-list"><a href="" class="">院内設備</a></li>
+                </div>
+                <span id="vertical-line-dropdown-menu"></span>
+                <!-- 定義された図形 paws -->
+                <svg class="paws" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                  <use href="#paws" />
+                </svg>
+                <!-- 定義された図形 paws 終了 -->
+              </div>
+            </ul>
+          </li>
+          <li class="header-nav-list" data-index="3"><a href="#first-question-accordion-container"><p>よくあるご質問</p></a>
+            <ul id="" class="header-dropdown-menu-wrapper header-dropdown-menu-lists-none" data-index="3">
+          <!-- ドロップダウンメニューがある場合はここに追加してください。 --><span id="vertical-line-dropdown-menu"></span>
+              <!-- 定義された図形 paws -->
+              <svg class="paws" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                <use href="#paws" />
+              </svg>
+              <!-- 定義された図形 paws 終了 -->
+            </ul>
+          </li>
+          <li class="header-nav-list" data-index="4"><p>オンラインストア</p>
+            <ul id="" class="header-dropdown-menu-wrapper header-dropdown-menu-lists" data-index="4">
+              <div id="header-dropdown-menu-online-store-container">
+                <span class="border-top-right"></span><span class="border-left-bottom"></span>
+                <span style="white-space: nowrap;" id="header-dropdown-menu-online-stor-list"><a href="">
+<pre>
+道内の無農薬の農産物で   
+ 作ったペットフードの
+ オンラインショップ
+</pre></a></span>
+                <span id="hand-to-hand">て<span class="small-text">と</span>て</span>
+                <section id="cat_dog-img-front_back">
+                  <img id="cat_dog-img-front" src="https://dl.dropbox.com/scl/fi/t1s500wazvenq1hx1bk68/1.png?rlkey=3jdta7b4w9qpqyqmh8zgbymyx&st=n43fasfg&dl=0" height="48px" alt="猫犬の画像">
+                  <img id="cat_dog-img-back" src="https://dl.dropbox.com/scl/fi/bxbfc6gctojxrcqx3zmz2/2.png?rlkey=ob9q0jjal8b43egcabapb6oqx&st=hhfe9ygf&dl=0" height="48px" alt="猫犬の画像">
+                </section>
+              </div>
+              <span id="vertical-line-dropdown-menu"></span>
+              <!-- 定義された図形 paws -->
+              <svg class="paws" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                <use href="#paws" />
+              </svg>
+              <!-- 定義された図形 paws 終了 -->
+            </ul>
+          </li>
+          <li class="header-nav-list" data-index="5"><p>お問い合わせ・ご予約</p>
+            <ul id="" class="header-dropdown-menu-wrapper header-dropdown-menu-lists" data-index="5">
+              <div id="header-dropdown-menu-contact_reservation-flex-container">
+                <span class="sibling-element"></span>
+                <li id="header-dropdown-menu-contact_reservation-list" class="header-dropdown-menu-list">
+<pre>
+「お問い合わせ」
+「ご予約」は「LINE」から
+</pre></li>
+                <a href="#contact-form" class="line-icon-wrapper"><img class="line-icon" src="https://dl.dropbox.com/scl/fi/fg171r2piy6idj8lfb90h/LINE1.png?rlkey=01dj6emcoivqj9w9a361ctrqi&st=xz2ljcol&dl=0" title="※「LINE」をクリックすると
+QRコードが表示されます。" alt="「LINE」のアイコンの画像"></a>
+                <div class="circle-wrapper">
+                  <span class="circle" title="※「LINE」をクリックすると
+QRコードが表示されます。"></span>
+                  
+                </div>
+                <div class="circle-text-container">
+                  <div class="block">
+                    <!-- 定義された図形 circle -->
+                    <svg class="circle-text" viewBox="0 0 100 100">
+                      <use xlink:href="#circle" class="circle-text_circle" />
+                    <!-- 定義された図形 circle 終了 -->
+                      <text class="circle-text_text" textLength="310" lengthAdjust="spacing">
+                        <textPath xlink:href="#circle" text-anchor="start" startOffset="0%">
+                          <tspan class="circle-text_tspan">U</tspan>SEFUL
+                          <tspan class="circle-text_tspan">U</tspan>SEFUL
+                          <tspan class="circle-text_tspan">U</tspan>SEFUL
+                          <tspan class="circle-text_tspan">U</tspan>SEFUL
+                          <tspan class="circle-text_tspan">U</tspan>SEFUL
+                          <tspan class="circle-text_tspan">U</tspan>SEFUL
+                          <tspan class="circle-text_tspan">U</tspan>SEFUL
+                          <tspan class="circle-text_tspan">U</tspan>SEFUL
+                          <tspan class="circle-text_tspan">U</tspan>SEFUL
+                        </textPath>
+                      </text>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <span id="vertical-line-dropdown-menu" class="header-dropdown-menu-contact_reservation-vertical-line-dropdown-menu">
+              </span>
+              <!-- 定義された図形 paws -->
+              <svg class="paws" id="header-dropdown-menu-contact_reservation-paws" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                <use xlink:href="#paws" />
+              </svg>
+              <!-- 定義された図形 paws 終了 -->
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <!-- ハンバーガーメニュー start -->
+      <nav id="hamburger-menu-wrapper">
+        <button id="hamburger-menu-icon-flex-container" class="hamburger-menu-open-close">
+          <!-- 定義された図形 hamburger-icon -->
+          <svg class="hamburger-icon">
+            <use xlink:href="#hamburger-icon" />
+          </svg>
+          <!-- 定義された図形 hamburger-icon 終了 -->
+          <!-- 定義された図形 hamburger-close-icon -->
+          <svg class="hamburger-close-icon">
+            <use xlink:href="#hamburger-close-icon" />
+          </svg>
+        </button>
+        <!-- 定義された図形 hamburger-close-icon 終了 -->
+        <!-- ハンバーガーメニューパネル 開始 -->
+        <ul id="hamburger-menu-panel" class="hamburger-menu-flex-container">
+          <!-- (li.hamburger-menu-list>a[href=#])*7 -->
+          <li class="hamburger-menu-list"><a href="#">ホーム</a></li>
+          <li class="hamburger-menu-list"><a href="#">私たちについて</a></li>
+          <li class="hamburger-menu-list"><a href="#">診療案内</a></li>
+          <li class="hamburger-menu-list"><a href="#">よくあるご質問</a></li>
+          <li class="hamburger-menu-list"><a href="#">オンラインストア</a></li>
+          <li class="hamburger-menu-list"><a href="#contact-form">お問い合わせ</a></li>
+          <li class="hamburger-menu-list"><a href="#">ご予約</a></li>
+        </ul>
+        <!-- ハンバーガーメニューパネル 終了 -->
+      </nav>
+      <!-- ハンバーガーメニュー 終了 -->
+    </div>
+    
+  <script src="script.js" defer></script>
+</body>
+</html>
