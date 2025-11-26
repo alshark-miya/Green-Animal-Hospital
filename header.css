@@ -1,0 +1,844 @@
+@charset 'utf-8';
+@import url('https://fonts.googleapis.com/css2?family=Knewave&family=Noto+Sans+JP:wght@100..900&display=swap');
+body {
+  margin: 0;
+  box-sizing: border-box;
+  /*
+  overflow: hidden;
+  */
+}
+:root {
+  /* カラー */
+  --base-color: #00582d; /* Dark Green */
+  --main-color: #ffce1f; /* Bright Yellow */
+  --accent-color: ;
+  --header-background-color: #DEA5A4; /* Pastel Pink */
+  --main-background-color: #ffce1f; /* Bright Yellow */
+  --side-background-color: #FF6961; /* Pastel Red */
+  --footer-background-color:#CFCFC4; /* Pastel Gray */
+  --outline-color: rgb(255, 206, 31, 1); /* --main-colorと同じ色 */
+  --circle-background-color: #45f931; /* Light Green */
+  --vertical-line: #f6f6ba; /* Pastel Yellow */
+  --paws-color: #e9e9e9; /* Pastel Gray */
+  --hamburger-panel-shadow: #403632;
+  --question-background-color: #d5efd4; /* Light Green */
+  /* フォント */
+  --header-base-font: 'M PLUS Rounded 1c', sans-serif;
+  --company-font: 'Kiwi Maru', serif;
+  --hand-to-hand-font: 'Sofia', cursive;
+}
+.header-item {
+  width: 100%;
+  height: auto;
+  background-color: var(--header-background-color);
+  padding-bottom: 9px;
+  font-family: var(--header-base-font);
+  font-weight: 600;
+  font-style: oblique 90deg;
+}
+.main-item {
+  width: 70%;
+  height: auto;
+  /* アコーディオンを跳ねないようにするには全体の高さを最大限大きくする ↓ */
+//height: 5000px;
+  
+  background-color: var( --main-background-color);
+  font-family: "Noto Sans JP", sans-serif;
+}
+.side-item {
+  width: 30%;
+  height: 200px;
+  background-color: var(--side-background-color);
+}
+.footer-item {
+  width: 100%;
+  height: 60px;
+  background-color: var(--footer-background-color);
+}
+#flex-container {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  flex-direction: wrow;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+#header-logo-text-img {
+  float: left;
+  witdh: 30%;
+  height: 60px;
+  margin-left: 20px;
+  margin-top: 12px;
+  /*
+  border: 5px solid green;
+  */
+}
+.header-logo-img img {
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  vertical-align: middle;
+  border-radius: 10px;
+}
+.header-logo-text,
+.header-logo-img {
+  display: inline-block;
+  /*
+  border: 3px solid red;
+  */
+}
+.header-logo-text {
+  margin-right: 20px;
+  /* display: none; */
+  display: contents;
+  visibility: hidden;
+}
+.flex-name {
+  display: block;
+  line-height: 0px;
+  padding-top: .4rem;
+}
+#company-name {
+  display: inline;
+  margin-left: 1.5rem;
+  font-size: 1.9rem;
+  vertical-align: middle;
+  /* ls + tab */
+  letter-spacing: 1.3rem;
+  /* fs:o0deg + tab */
+  font-style: oblique 0deg;
+  color: var(--base-color);
+  font-family: var(--company-font);
+  font-weight: 600;
+}
+/* ヘッダーナビ Start */
+#header-nav-lists {
+  display: flex;
+  width: 100vw;
+  height: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 38px;
+  color: var(--base-color);
+  font-size: .85rem;
+  font-style: oblique 0deg;
+  /*
+  border: 1px solid red;
+  */
+}
+.header-nav-list:nth-of-type(n + 1) {
+  clear: left;
+  list-style-type: none;
+  line-height: 1.6rem;
+  padding: 0 3px;
+  cursor: pointer;
+  position: relative;
+}
+.header-nav-list p {
+  display: inline-block;
+  outline-offset: 6px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+.header-nav-list p:hover {
+  outline: 3px solid var(--outline-color);
+}
+/* ヘッダーナビ End */
+/* ドロップダウンメニュー Start */
+.header-dropdown-menu-wrapper {
+  min-width: 9rem;
+  max-width: calc(15rem + 7rem);
+  height: auto;
+  background: white;
+  padding: 2rem 2rem 2rem calc(2rem + .76rem);
+  /* padding-leftだけリストのマーカーの大きさを追加 */
+  margin-top: 7.4px;
+  border-radius: 16px;
+  outline: 1px solid var(--base-color);
+  outline-offset: -5px;
+  position: relative;
+  position: absolute;
+  top: 2.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: auto;
+  z-index: 5;
+
+  /*
+  animation: header-dropdown-menu-animation .1s forwards paused;
+  /*
+  /*
+  animation-name: header-dropdown-menu-animation;
+  animation-duration: .1s;
+  animation-fill-mode: both;
+  animation-play-state: paused;
+  */
+  /*
+  display: none; ←記述は? 
+  */
+  visibility: hidden;
+}
+/*
+@keyframes header-dropdown-menu-animation {
+  from {
+    display: none;
+    opacity: 0;
+  }
+  to {
+    display: block;
+    opacity: 1;
+  }
+}
+*/
+#header-dropdown-menu-medical-info-flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: center;
+  width: calc(15rem + 7rem);
+  height: auto;
+  background: white;
+  padding: 2rem 2rem calc(2rem + -.1rem) calc(2rem + .76rem);
+  border-radius: 16px;
+  outline: 1px solid var(--base-color);
+  outline-offset: -5px;
+  position: relative;
+  bottom: 31px;
+  right: 44px;
+  /*
+  z-index: -1; 
+  */
+  visibility: hidden;
+}
+
+#dropdown-menu-hospital-lists {
+  flex-basis: 15rem;
+  flex-grow: 1;
+}
+#dropdown-menu-non-hospital-lists {
+  flex-basis: 7rem;
+  flex-grow: 1;
+}
+#header-dropdown-menu-online-store-container {
+  position: relative;
+  width: 10.2rem;
+  height: auto;
+  border: 5px solid transparent;
+  text-align: center;
+  inset: 0;
+  margin-right: .76rem;
+  padding: 1rem;
+  padding-left: calc(1rem + .8rem);
+  cursor: pointer;
+}
+#header-dropdown-menu-online-store-container .border-top-right::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-top: 5px solid var(--main-color);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  transform-origin: top left;
+  opacity: 0;
+  transform: scaleX(.15);
+  transition: opacity .25s linear, transform .25s ease-out;
+}
+#header-dropdown-menu-online-store-container .border-top-right::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: -5px;
+  border-right: 5px solid var(--main-color);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  opacity: 0;
+  transform-origin: bottom right; 
+  transform: scaleY(.15);
+  transition: opacity .25s linear, transform .25s ease-out;
+}
+#header-dropdown-menu-online-store-container .border-left-bottom::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-left: 5px solid var(--main-color);
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  opacity: 0;
+  transform-origin: top left;
+  transform: scaleY(.15);
+  transition: opacity .25s linear, transform .25s ease-out;
+}
+#header-dropdown-menu-online-store-container .border-left-bottom::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: -5px;
+  left: 0;
+  border-bottom: 5px solid var(--main-color);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  opacity: 0;
+  transform-origin: bottom right;
+  transform: scaleX(.15);
+  transition: opacity .25s linear, transform .25s ease-out;
+  /*
+  transition-property:  opacity, transform;
+  transition-duration: .3s;
+  transition-timing-function: linear;
+  */
+}
+#header-dropdown-menu-online-store-container:hover .border-top-right::before,
+#header-dropdown-menu-online-store-container:hover .border-top-right::after,
+#header-dropdown-menu-online-store-container:hover .border-left-bottom::before,
+#header-dropdown-menu-online-store-container:hover .border-left-bottom::after 
+{
+@starting-style {
+    opacity: 0;
+    transform: scaleX(.15);
+    transform: scaleY(.15);
+  }
+    opacity: 1;
+    transform: scaleX(1); 
+    transform: scaleY(1);
+}
+/*
+#header-dropdown-menu-online-store-container:hover {
+  @starting-style {
+    outline: none;
+  }
+  outline: 5px solid var(--main-color);
+}
+*/
+#hand-to-hand {
+  display: block;
+  margin: 0 auto;
+  margin-top: 2rem;
+  margin-right: .76rem;
+  /* padding-leftだけリストのマーカーの大きさを追加 */
+  padding: .7rem;
+  padding-right: .76rem;
+  width: 100px;
+  height: 32px;
+  border: 1rem solid transparent;
+  border-image-source: url('https://dl.dropbox.com/scl/fi/72ipsu5rjgh1fb3ol86hq/1.png?rlkey=0mmfmp1x4grijgyk9eglw49vd&st=us800gg4&dl=0');
+  border-image-slice: 50;
+  border-image-width: calc(32px / 2) calc(120px / 2);
+  border-image-outset: 0 0 0 .8rem;
+  color: var(--main-color);
+  font-family: var(--hand-to-hand-font);
+  font-weight: 900;
+  font-style: normal;
+  text-indent: -.9rem;
+}
+#hand-to-hand .small-text {
+  dipslay: block;
+  font-size: 11.3333px;
+  padding: 0 1.5rem;
+  line-height: 2rem;
+}
+#cat_dog-img-front_back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  curdor: pointer;
+  margin: 3rem .76rem 2rem 0;
+  transform-style: preserve-3d;
+  transition: rotate 1.5s;
+}
+#cat_dog-img-front,
+#cat_dog-img-back {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+}
+#cat_dog-img-back {
+  rotate: y 180deg;
+}
+#cat_dog-img-front_back:hover {
+  @starting-style {
+    rotate: y 0deg;
+  }
+  rotate: y 180deg;
+}
+/*
+#cat_dog-img {
+  margin-top: 2rem;
+  margin-right: .76rem;
+}
+*/
+.header-dropdown-menu-lists-none {
+  visibility: hidden;
+  display: none;
+}
+#header-dropdown-menu-contact_reservation-flex-container {
+  width: 290px;
+  aspect-ratio: 1 / 1;
+  margin-right: .76rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  align-items: center;
+  justify-content: space-around;
+}
+#header-dropdown-menu-contact_reservation-list {
+  width: max-content;
+  height: 5rem;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.9;
+  list-style: none;
+  color: white;
+  font-size: 1.05rem;
+  cursor: default;
+  z-index: 2;
+}
+.line-icon-wrapper {
+  align-self: center;
+  z-index: 2;
+}
+.line-icon {
+  width: 64px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+.header-dropdown-menu-list {
+  border-bottom: 2px solid transparent;
+  padding-right: .3rem;
+  padding-bottom: .1rem;
+  margin-bottom: calc(.2rem + 2px);
+  list-style-type: '?';
+  width: fit-content;
+  white-space: break-spaces;
+  text-align: left;
+  text-indent: .5rem;
+  position: relative;
+}
+.header-dropdown-menu-list::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  border-bottom: inherit;
+  background-color: var(--main-color);
+  transition: width .3s linear;
+}
+.header-dropdown-menu-list:hover::after {
+  @starting-style {
+    display: none;
+    opacity: 0;
+  }
+  width: 100%;
+  display: block;
+}
+.header-dropdown-menu-list::marker,
+#header-dropdown-menu-online-stor-list::marker {
+  font-size:.76rem;
+  cursor: pointer;
+}
+#header-dropdown-menu-contact_reservation-list::marker {
+  cursor: default;
+}
+#header-dropdown-menu-online-stor-list,
+#header-dropdown-menu-reservation_contact-list {
+  display: list-item;
+  list-style-type: '?';
+  text-indent: .5rem;
+  text-align: left;
+}
+.header-dropdown-menu-list a,
+#header-dropdown-menu-online-stor-list a {
+  text-decoration: none;
+  color: var(--base-color);
+}
+#header-dropdown-menu-contact_reservation-flex-container .circle_text {
+  width: 284px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+}
+#header-dropdown-menu-contact_reservation-flex-container .circle {
+  width: 244px;
+aspect-ratio: 1 / 1;
+  display: inline-block;
+  clip-path: circle(50% at 50% 50%);
+  background-color: var(--circle-background-color);
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  z-index: 1;
+}
+.circle-text-container .block {
+  width: 264px;
+  aspect-ratio: 1 / 1;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+}
+.circle-text-container .circle-text {
+  overflow: visible;
+  animation: rotation 50s infinite linear;
+  position: absolute;
+  &_circle {
+    fill: none;
+    z-index: -1;
+  }
+  &_text {
+    fill: var(--base-color);
+    font-size: .4rem;
+    letter-spacing: .08rem;
+  }
+  &_tspan {
+    fill: var(--main-color);
+  }
+}
+@keyframes rotation {
+  to {
+    rotate: 360deg;
+  }
+}
+#vertical-line-dropdown-menu {
+  border-left: 10px solid transparent;
+  border: none;
+  height: 30px;
+  /*
+  border-image: linear-gradient(to bottom, var(--main-color), var(--vertical-line)) 1 10px;
+  */
+  border-image-source: linear-gradient(to bottom, var(--main-color), var(--vertical-line));
+  border-image-slice: 1;
+  border-image-width: 10px;
+  border-color: var(--main-color); /* border-imageはブラウザによっては非対応なため、border-colorも併記 */
+  /*
+  border-radius: 10px;
+  */
+  /*
+  border-top-left-radius: 10px 50%;
+  border-top-right-radius: 10px 50%;
+  border-bottom-right-radius: 10px 50%;
+  border-bottom-left-radius: 10px 50%;
+  */
+  border-radius: calc(infinity * 1px); /* 縦や横の幅が違っても（変わっても）角丸を作る */
+}
+#vertical-line-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 10px;
+  height: 30px;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  border-radius: inherit; /* 角丸の大きさを親要素から継承 */
+  background: linear-gradient(to bottom, var(--main-color), var(--vertical-line));
+}
+.paws {
+  position: absolute;
+  bottom: 3px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  transform: translateY(50%);
+  height: 1.8rem;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  text-decoration: none;
+  fill: var(--paws-color);
+  outline: none;
+  /*
+  overflow: hidden;
+  */
+  z-index: 2;
+}
+#header-dropdown-menu-contact_reservation-paws {
+  position: absolute;
+  left: 6px;
+}
+#vertical-line-dropdown-menu::after {
+  content: '';
+  position: absolute;
+  bottom: 3px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 1.8rem;
+  height: 2px;
+  background: white;
+  z-index: 1;
+}
+.header-dropdown-menu-contact_reservation-vertical-line-dropdown-menu::after {
+  position: absolute;
+  bottom: 0;
+  transform: translateX(3px);
+  z-index: 1;
+}
+/* ドロップダウンメニュー End */
+
+/* ハンバーガーメニュー Start */
+#hamburger-menu-wrapper {
+  position: rilative;
+  top: 0;
+  right: 0;
+  width: max(32vw, 20rem);
+  height: 100%;
+  z-index: 11;
+
+}
+#hamburger-menu-icon-flex-container {
+  width: 36px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: transparent;
+  border: none;
+  transition: rotate 0s linear; 
+  transform-style: preserve-3d;
+  z-index: 11;
+}
+.hamburger-icon, 
+.hamburger-close-icon {
+  width: inherit;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  cursor: pointer;
+  stroke: none;
+  border: none;
+  paint-order: stroke fill;
+  backface-visibility: hidden;
+}
+.hamburger-icon {
+  
+  fill: var(--main-color);
+}
+.hamburger-close-icon {
+  rotate: x 180deg;
+  fill: var(--main-color);
+}
+/*
+#hamburger-menu-icon-flex-container:active {
+  @starting-style {
+    rotate: x 0deg;
+  }
+  rotate: x 180deg;
+}
+*/
+/* ハンバーガーメニューアイコン End */
+/* ハンバーガーメニューパネル Start */
+.hamburger-menu-flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 1.2rem;
+  position: fixed;
+  top: -16px;
+  right: 0;
+  width: inherit;
+  height: inherit;
+  list-style: none;
+  background-color: var(--base-color);
+  outline: 5px solid var(--main-color);
+  outline-offset: -5px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: coral gray;
+  box-shadow: 0 0 2rem var(--hamburger-panel-shadow);
+  translate:  0vw;
+  padding-top: 1.8rem;
+  padding-right: calc(.76rem + .5rem);
+  translate: 100vw;
+  z-index: 10;
+}
+.hamburger-menu-flex-container a {
+  text-decoration: none;
+  color: white;
+}
+.hamburger-menu-flex-container li:nth-of-type(n + 1)::before {
+  content: '?';
+  color: var(--main-color);
+  font-size: .76rem;
+  cursor: pointer;
+  padding-right: .5rem;
+}
+.hamburger-menu-list {
+  @stating-style {
+    opacity: 0;
+    translate: 2rem;
+  }
+}
+/* ハンバーガーメニューパネル End */
+/* よくあるご質問 アコーディオン Start */
+#first-question-accordion-container {
+  text-align: center;
+  color: var(--base-color);
+  margin-bottom: 26px;
+  scroll-margin-top: 20px;
+}
+.question-header1 {
+  background: url(https://dl.dropbox.com/scl/fi/o69hxjb4mam9z0yqspzpu/.png?rlkey=cvuphj6ogebuw3ad4p29scwp9&st=p2ml1qp0&dl=0) no-repeat center/ 52vw auto;
+  padding: 32px 0;
+  margin: 48px 0 64px;
+}
+.question-accordion {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  margin: 0 auto;
+  width: 70%;
+  background-color: var(--question-background-color);
+  border-radius: 20px;
+}
+.question-accordion[open] {
+  grid-template-rows: 1fr;
+}
+.question-accordion .summary-first {
+  height: 120px;
+  list-style-type: none;
+  padding: 36px 0;
+  cursor: pointer;
+  position: relative;
+}
+.summary-plus_close {
+  background: url(https://dl.dropbox.com/scl/fi/e1919d5kxuta9mzj38ls6/plus-Icon-Font.svg?rlkey=p6isov9r5t2fwhohzt20xtka8&st=ci7ll0aw&dl=0) no-repeat;
+  position: absolute;
+  top: calc((120px + 36px * 2) / 2);
+  right: 0px;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  transform-origin: center top;
+  rotate: 0deg;
+//animation: question-accordion-summary-before .25s ease-in-out both;
+  animation-play-state: paused;
+//transition: rotate .25s ease-in-out;
+}
+.summary-plus_close.running_paused {
+  animation-play-state: running;
+  rotate: 45deg;
+}
+/*.summary-plus_close::before {
+  content: '';
+}
+@keyframes question-accordion-summary-before {
+  to {
+    rotate: 45deg;
+  }
+}
+.question-accordion summary::marker {
+}
+*/
+.question-header2 {
+  font-size: 26px;
+}
+#reservation_medical-treatment-container {
+  overflow: hidden;
+  padding: 0px;
+  margin-top: 0px;
+  margin-left: 36px;
+  cursor: default;
+  text-align: left;
+  counter-reset: step 0;
+}
+#reservation-wrapper div, 
+.reservation-medical-treatment-item p {
+  border-left: 2px solid var(--main-color);
+  position: relative;
+  left: 38px;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  text-size-adjust: 100%;
+}
+#reservation-wrapper div {
+  padding-bottom: 16px;
+}
+.reservation-medical-treatment-item:last-child p {
+  border-left: none;
+}
+/*
+#check-out-wrapper p {
+  border-left: none;
+}
+*/
+.reservation_medical-treatment-header3 {
+  counter-increment: step 1;
+  margin: 0;
+  font-size: 26px;
+}
+.reservation_medical-treatment-header3::before {
+  content: 'STEP\A'counter(step, decimal-leading-zero); /* 改行位置に \A を記述 */
+  white-space: pre-wrap;
+  margin-right: 16px;
+  display: inline-block;
+  text-align: center;
+  border: 2px solid;
+  font-size: .9rem;
+  padding: 16px;
+  background-color: var(--main-color);
+  width: 42px;
+  height: 42px;
+  vertical-align: middle;
+  clip-path: url(#step-circle);
+}
+#step-circle-wrapper {
+  height: 0;
+  margin: -32px 0;
+}
+#step-circle {
+}
+#reservation_medical-treatment-container .text,
+#reservation_medical-treatment-container h4,
+#reservation_medical-treatment-container p {
+  width: 80%;
+  padding-left: 55px;
+  white-space: pre-wrap;
+  word-break: keep-all;
+}
+#reservation_medical-treatment-container h4 {
+  font-size: 20px;
+}
+#reservation_medical-treatment-container ul {
+  padding: 0;
+}
+#reservation_medical-treatment-container li,
+#reservation_medical-treatment-container li p {
+  width: 80%;
+  margin-left: 90px;
+}
+#reservation_medical-treatment-container li {
+  font-size: 16px;
+  margin-top: 0px;
+}
+#reservation_medical-treatment-container li p {
+  display: inline;
+  margin: 0px;
+  padding: 0px;
+}
+#reservation_medical-treatment-container li #laundry-net {
+  margin: 0px;
+  font-size: 0.875rem;
+  padding-right: 55px;
+}
+#reservation_medical-treatment-container li pre {
+  margin: 0px;
+  line-height: 20px;
+}
