@@ -143,6 +143,9 @@ body {
 .header-nav-list p:hover {
   outline: 3px solid var(--outline-color);
 }
+.header-nav-list a {
+  color: var(--base-color);
+}
 /* ヘッダーナビ End */
 /* ドロップダウンメニュー Start */
 .header-dropdown-menu-wrapper {
