@@ -177,9 +177,14 @@ const hamburgerMenuIconFlexContainer  = document.querySelector('#hamburger-menu-
 const hamburgerMenuLists = document.querySelectorAll('.hamburger-menu-list');
 
 // メニューを開く
-hamburgerIcon.addEventListener('click', () => { 
+hamburgerIcon.addEventListener('click', openHamburgerMenu);
+
+function openHamburgerMenu() {
   console.log('メニューを開く');
-  setTimeout(`hamburgerMenuIconFlexContainer.style.transform = 'rotateX(180deg)'`, 840);
+  
+  setTimeut(() => {
+    hamburgerMenuIconFlexContainer.style.transform = 'rotateX(180deg)'
+  }, 840);
   
   const keyframes1 = {
     translate: ['100vw', 0],
