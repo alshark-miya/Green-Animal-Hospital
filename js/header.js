@@ -182,7 +182,7 @@ hamburgerIcon.addEventListener('click', openHamburgerMenu);
 function openHamburgerMenu() {
   console.log('メニューを開く');
   
-  setTimeut(() => {
+  setTimeout(() => {
     hamburgerMenuIconFlexContainer.style.transform = 'rotateX(180deg)'
   }, 840);
   
