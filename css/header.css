@@ -177,7 +177,7 @@ body {
   animation-play-state: paused;
   */
   /*
-  display: none; ←記述は? 
+  display: none; ←記述は✖ 
   */
   visibility: hidden;
 }
@@ -422,12 +422,15 @@ body {
   padding-right: .3rem;
   padding-bottom: .1rem;
   margin-bottom: calc(.2rem + 2px);
-  list-style-type: '?';
   width: fit-content;
   white-space: break-spaces;
   text-align: left;
   text-indent: .5rem;
   position: relative;
+}
+.header-dropdown-menu-list::marker{
+    content: '▶';
+
 }
 .header-dropdown-menu-list::after {
   content: '';
@@ -459,7 +462,7 @@ body {
 #header-dropdown-menu-online-stor-list,
 #header-dropdown-menu-reservation_contact-list {
   display: list-item;
-  list-style-type: '?';
+  list-style-type: '▶';
   text-indent: .5rem;
   text-align: left;
 }
@@ -676,7 +679,7 @@ aspect-ratio: 1 / 1;
   color: white;
 }
 .hamburger-menu-flex-container li:nth-of-type(n + 1)::before {
-  content: '?';
+  content: '▶';
   color: var(--main-color);
   font-size: .76rem;
   cursor: pointer;
