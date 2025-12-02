@@ -211,12 +211,17 @@ function openHamburgerMenu() {
     };
     hamburgerMenuList.animate(keyframes2, options2); 
   });
-});
-
+}
 // メニューを閉じる
-hamburgerCloseIcon.addEventListener('click', () => {
+hamburgerCloseIcon.addEventListener('click', closeHamburgerMenu);
+
+function closeHamburgerMenu() {
   console.log('メニューを閉じる');
-  setTimeout(`hamburgerMenuIconFlexContainer.style.transform = 'rotateX(360deg)'`, 580);
+  
+  setTimeout(() => {
+    hamburgerMenuIconFlexContainer.style.transform = 'rotateX(360deg)'
+  }, 580);
+  
   const keyframes = {
     translate:[0, '100vw'],
   };
@@ -229,5 +234,5 @@ hamburgerCloseIcon.addEventListener('click', () => {
     hamburgerMenuList.animate({opacity: [1, 0]}, options);
   });
   hamburgerMenuPanel.animate(keyframes, options);
-});
+}
 // ハンバーガーメニューパネル 終了
